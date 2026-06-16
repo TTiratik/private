@@ -1,0 +1,38 @@
+{
+    "arizona": [
+        {
+            "number": 3,
+            "name": "Arizona FUN",
+            "ip": "51.38.143.249",
+            "port": 7777,
+            "online": 6,
+            "maxplayers": 200,
+            "password": false,
+            "vk": "https://www.youtube.com/watch?v=DdVxKVBlMfY&t=4316s",
+            "tg": "https://www.youtube.com/watch?v=DdVxKVBlMfY&t=4316s",
+            "inst": "https://www.youtube.com/watch?v=DdVxKVBlMfY&t=4316s",
+            "icon": "https://www.youtube.com/watch?v=DdVxKVBlMfY&t=4316s",
+            "plotPoints": [],
+            "recomend": true,
+            "donateMultiplier": 0,
+            "experienceMultiplier": 4
+        },
+        {
+            "number": 2,
+            "name": "Ne Arizona Ne RP",
+            "ip": "188.127.241.74",
+            "port": 2519,
+            "online": 777,
+            "maxplayers": 200,
+            "password": false,
+            "vk": "https://www.youtube.com/watch?v=DdVxKVBlMfY&t=4316s",
+            "tg": "https://www.youtube.com/watch?v=DdVxKVBlMfY&t=4316s",
+            "inst": "https://www.youtube.com/watch?v=DdVxKVBlMfY&t=4316s",
+            "icon": "https://www.youtube.com/watch?v=DdVxKVBlMfY&t=4316s",
+            "plotPoints": [],
+            "recomend": true,
+            "donateMultiplier": 0,
+            "experienceMultiplier": 9
+        }
+    ]
+}

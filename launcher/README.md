@@ -38,3 +38,25 @@ Electron cannot be made fully decompile-proof. Measures to add before release:
 - mandatory version check via `/launcher/version`.
 
 Full brief: `../.design/classic5rp-launcher/DESIGN_BRIEF.md`.
+
+## Settings
+Stored in Electron `userData/settings.json` via `electron/store.ts`:
+`nickname`, `gamePath` (folder picker), `cdnBaseUrl`. The renderer reads/writes
+them through the preload bridge (`window.launcher.getSettings/setSettings`).
+
+## Differential updater (less CDN traffic)
+`electron/updater.ts` keeps CDN downloads minimal:
+1. fetch `<cdnBaseUrl>/manifest.json` — `{ version, files:[{path,size,sha256}] }`;
+2. `scanLocal` hashes only files whose size matches the manifest;
+3. `diffManifest` (pure, unit-tested) lists **only missing/changed files**;
+4. `runUpdate` downloads them from `<cdnBaseUrl>/files/…` with HTTP **Range
+   resume** (partial `.part` files are continued, not refetched), low
+   concurrency, and **SHA-256 verification** before swapping each file in.
+
+So a client that is already up to date downloads nothing; a small patch pulls
+only the changed packs. Progress streams to the UI (`updater:progress`).
+`npm test` covers the diff, resume and checksum paths.
+
+> Note: `src/devBridge.ts` simulates the native bridge when the renderer runs
+> in a plain browser (vite preview / screenshots). Inside Electron the preload
+> bridge wins and the dev bridge is a no-op.

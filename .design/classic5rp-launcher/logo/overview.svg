@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="960" viewBox="0 0 1120 960">
+  <defs><g id="star"><path d="M120,50 L136.5,97.3 L186.6,98.4 L146.6,128.7 L161.2,176.6 L120,148 L78.8,176.6 L93.4,128.7 L53.4,98.4 L103.5,97.3 Z" fill="#141414"/><path d="M54,58 L104,96 L86,112 Z" fill="#141414"/></g></defs>
+  <rect width="1120" height="960" fill="#ffffff"/>
+  <text x="48" y="56" font-family="Inter" font-weight="600" font-size="26" fill="#9aa4b6">Classic 5 RP — wordmark directions (placeholder star · live text)</text>
+
+  <!-- A: upright, weight contrast -->
+  <text x="48" y="150" font-family="Inter" font-weight="700" font-size="30" fill="#f5731f">A</text>
+  <use href="#star" transform="translate(70,130) scale(0.78)"/>
+  <text x="320" y="268" font-family="Inter Display" font-weight="900" font-size="104" letter-spacing="-3" fill="#141414">CLASSIC<tspan fill="#141414">5</tspan></text>
+  <text x="905" y="268" font-family="Inter Display" font-weight="300" font-size="60" letter-spacing="6" fill="#141414">RP</text>
+  <text x="320" y="310" font-family="Inter" font-weight="500" font-size="22" fill="#9aa4b6">Upright · heavy word + light RP (premium, close to reference)</text>
+
+  <!-- B: italic velocity -->
+  <text x="48" y="470" font-family="Inter" font-weight="700" font-size="30" fill="#f5731f">B</text>
+  <use href="#star" transform="translate(70,450) scale(0.78)"/>
+  <g transform="skewX(-8)">
+    <text x="360" y="588" font-family="Inter Display" font-weight="900" font-style="italic" font-size="104" letter-spacing="-4" fill="#141414">CLASSIC<tspan>5</tspan></text>
+  </g>
+  <text x="915" y="588" font-family="Inter Display" font-weight="300" font-style="italic" font-size="60" letter-spacing="4" fill="#141414">RP</text>
+  <text x="320" y="630" font-family="Inter" font-weight="500" font-size="22" fill="#9aa4b6">Italic · motion that echoes the shooting-star (gaming, fast)</text>
+
+  <!-- C: roman-numeral V concept -->
+  <text x="48" y="790" font-family="Inter" font-weight="700" font-size="30" fill="#f5731f">C</text>
+  <use href="#star" transform="translate(70,770) scale(0.78)"/>
+  <text x="320" y="888" font-family="Inter Display" font-weight="900" font-size="104" letter-spacing="-3" fill="#141414">CLASSIC</text>
+  <text x="792" y="888" font-family="Inter Display" font-weight="900" font-size="104" fill="#f5731f">V</text>
+  <text x="878" y="888" font-family="Inter Display" font-weight="300" font-size="60" letter-spacing="6" fill="#141414">RP</text>
+  <text x="320" y="930" font-family="Inter" font-weight="500" font-size="22" fill="#9aa4b6">&quot;5&quot; as roman V — reinforces &quot;classic&quot; (ownable idea)</text>
+</svg>

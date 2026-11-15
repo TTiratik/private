@@ -1,0 +1,13 @@
+[
+  { "id": "downtown",   "name": "Downtown",   "slug": "downtown",   "online": 1580, "status": "online",      "order": 1, "connectUrl": "classic5rp://connect/downtown" },
+  { "id": "strawberry", "name": "Strawberry", "slug": "strawberry", "online": 1434, "status": "online",      "order": 2, "connectUrl": "classic5rp://connect/strawberry" },
+  { "id": "vinewood",   "name": "Vinewood",   "slug": "vinewood",   "online": 1746, "status": "online",      "order": 3, "connectUrl": "classic5rp://connect/vinewood" },
+  { "id": "blackberry", "name": "BlackBerry", "slug": "blackberry", "online": 878,  "status": "online",      "order": 4, "connectUrl": "classic5rp://connect/blackberry" },
+  { "id": "insquad",    "name": "Insquad",    "slug": "insquad",    "online": 759,  "status": "online",      "order": 5, "connectUrl": "classic5rp://connect/insquad" },
+  { "id": "sunrise",    "name": "Sunrise",    "slug": "sunrise",    "online": 710,  "status": "maintenance", "order": 6, "connectUrl": "classic5rp://connect/sunrise" },
+  { "id": "rainbow",    "name": "Rainbow",    "slug": "rainbow",    "online": 803,  "status": "online",      "order": 7, "connectUrl": "classic5rp://connect/rainbow" },
+  { "id": "richman",    "name": "Richman",    "slug": "richman",    "online": 685,  "status": "online",      "order": 8, "connectUrl": "classic5rp://connect/richman" },
+  { "id": "eclipse",    "name": "Eclipse",    "slug": "eclipse",    "online": 1433, "status": "online",      "order": 9, "connectUrl": "classic5rp://connect/eclipse" },
+  { "id": "lamesa",     "name": "La Mesa",    "slug": "lamesa",     "online": 883,  "status": "online",      "order": 10, "connectUrl": "classic5rp://connect/lamesa" },
+  { "id": "offline1",   "name": "Prosperity","slug": "prosperity", "online": 0,    "status": "offline",     "order": 11, "connectUrl": "classic5rp://connect/prosperity" }
+]

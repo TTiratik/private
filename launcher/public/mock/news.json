@@ -1,0 +1,6 @@
+[
+  { "id": "n1", "title": "Обновления, которые согревают!", "imageUrl": "", "link": "https://classic5rp.example/news/1", "publishedAt": "2026-11-10", "tag": "Обновление" },
+  { "id": "n2", "title": "Новые причёски уже в игре!",      "imageUrl": "", "link": "https://classic5rp.example/news/2", "publishedAt": "2026-11-08", "tag": "Новинка" },
+  { "id": "n3", "title": "Пожарные и прочие нововведения!", "imageUrl": "", "link": "https://classic5rp.example/news/3", "publishedAt": "2026-11-05", "tag": "Работа" },
+  { "id": "n4", "title": "Зимний ивент: старт на выходных", "imageUrl": "", "link": "https://classic5rp.example/news/4", "publishedAt": "2026-11-02", "tag": "Ивент" }
+]

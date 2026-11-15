@@ -1,0 +1,6 @@
+[
+  { "label": "Discord",  "url": "https://discord.gg/classic5rp",  "icon": "discord" },
+  { "label": "Telegram", "url": "https://t.me/classic5rp",         "icon": "telegram" },
+  { "label": "VK",       "url": "https://vk.com/classic5rp",       "icon": "vk" },
+  { "label": "YouTube",  "url": "https://youtube.com/@classic5rp", "icon": "youtube" }
+]

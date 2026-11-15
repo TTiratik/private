@@ -1,21 +1,35 @@
 # Classic 5 RP — Launcher
 
-Desktop game launcher (Electron + Vite + React + TypeScript + Tailwind).
+Desktop game launcher — **Tauri (Rust) + Vite + React + TypeScript + Tailwind**.
+The UI is web; the backend (settings, updater, game launch) is Rust in `src-tauri/`.
 
 ## Develop
 ```bash
 npm install
-npm run dev        # Vite renderer + Electron (frameless window)
+npm run dev        # Tauri dev: Vite renderer + Rust window (frameless)
 ```
-Renderer only (for quick UI work / screenshots):
+Renderer only (browser preview / screenshots — a dev bridge stands in for the
+native backend):
 ```bash
 npm run build:renderer && npm run preview
 ```
 
 ## Build
 ```bash
-npm run build      # builds renderer (dist/) and electron (dist-electron/)
+npm run build      # tauri build -> native installer (.msi/.exe on Windows)
+npm test           # cargo tests for the Rust core (updater + settings)
 ```
+
+## Rust backend (`src-tauri/`)
+- `core/` — a GUI-free crate with the real logic, fully unit-tested
+  (`diff_manifest`, `scan_local`, `hash_file`, `run_update`, `Settings`).
+- `src/lib.rs` — thin Tauri commands that call `core` and stream events.
+- Commands: `get_settings`, `set_settings`, `pick_folder`, `verify_files`,
+  `run_update_cmd`, `launch_game`, `win_minimize/close`, `open_external`.
+
+> Note: the Tauri GUI links against WebView (WebView2 on Windows, WebKitGTK on
+> Linux). Build it on your target OS. The Rust **core** compiles and tests
+> anywhere (`npm test`).
 
 ## API
 All UI talks to a single `LauncherApi` interface (`src/api/types.ts`).
@@ -30,9 +44,11 @@ Endpoints (v1): `GET /servers`, `GET /news`, `GET /communities`,
 derives it).
 
 ## Security / anti-tamper (planned, see design brief)
-Electron cannot be made fully decompile-proof. Measures to add before release:
+A native Rust/Tauri binary is already much harder to decompile than an Electron/JS
+bundle. Measures to add before release:
 - keep all secrets & launch authorisation server-side (already: ticket from API);
-- compile main/renderer to V8 bytecode (`bytenode`), obfuscate the rest;
+- ship the logic as the compiled Rust binary (no JS bytecode step needed);
+  obfuscate/minify the web UI assets;
 - `asar` packaging + `asarIntegrity`, code signing;
 - `contextIsolation`/`sandbox` on, strict CSP, DevTools off in prod (done in code);
 - mandatory version check via `/launcher/version`.
@@ -40,12 +56,12 @@ Electron cannot be made fully decompile-proof. Measures to add before release:
 Full brief: `../.design/classic5rp-launcher/DESIGN_BRIEF.md`.
 
 ## Settings
-Stored in Electron `userData/settings.json` via `electron/store.ts`:
-`nickname`, `gamePath` (folder picker), `cdnBaseUrl`. The renderer reads/writes
-them through the preload bridge (`window.launcher.getSettings/setSettings`).
+Stored in the app config dir (`settings.json`) by `core::Settings`:
+`nickname`, `gamePath` (native folder picker), `cdnBaseUrl`. The renderer reads/
+writes them through the Tauri bridge (`window.launcher.getSettings/setSettings`).
 
 ## Differential updater (less CDN traffic)
-`electron/updater.ts` keeps CDN downloads minimal:
+`src-tauri/core/src/updater.rs` keeps CDN downloads minimal:
 1. fetch `<cdnBaseUrl>/manifest.json` — `{ version, files:[{path,size,sha256}] }`;
 2. `scanLocal` hashes only files whose size matches the manifest;
 3. `diffManifest` (pure, unit-tested) lists **only missing/changed files**;
@@ -55,8 +71,7 @@ them through the preload bridge (`window.launcher.getSettings/setSettings`).
 
 So a client that is already up to date downloads nothing; a small patch pulls
 only the changed packs. Progress streams to the UI (`updater:progress`).
-`npm test` covers the diff, resume and checksum paths.
+`npm test` (cargo) covers the diff, resume and checksum paths.
 
-> Note: `src/devBridge.ts` simulates the native bridge when the renderer runs
-> in a plain browser (vite preview / screenshots). Inside Electron the preload
-> bridge wins and the dev bridge is a no-op.
+> Note: `src/tauriBridge.ts` wires `window.launcher` to Tauri `invoke`/events
+> when running natively; `src/devBridge.ts` simulates it for browser preview.
